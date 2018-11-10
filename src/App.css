@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  /* height: 150px; */
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* log in form */
+.logInput {
+  padding: 5px 20px;
+  width: 50%;
+  height: 40px;
+  margin: 0px 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.label {
+  margin: 0%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.logBtn {
+  font-size: 18px;  
+  padding: 10px 20px;
+  width: 53%;
+  margin: 0px 10px;
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 10px;
+  color: white;
+  background-color: #222;
+  border-color: #222
+}
+#logForm {
+  transition-delay: 2000s;
+}
+/* end of log in form */
+/* card */
+
+.Card {
+  width: 350px;
+  margin: 16px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(56, 56, 56);
+  color: white; 
+  display: inline-block;
+}
+.delBtn {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+.delBtn span{
+  cursor: pointer;
+  background: white;
+  color: #222;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+.delBtn span:hover{
+  background: #222;
+  color: white;
+
+}
+/* end of cards */

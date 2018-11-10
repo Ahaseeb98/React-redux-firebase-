@@ -1,0 +1,1 @@
+[0828/213811.402:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: Insufficient system resources exist to complete the API. (0xc000009a)
