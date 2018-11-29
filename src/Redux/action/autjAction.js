@@ -1,13 +1,13 @@
 const updateUser = (user) => {
     return {
-        type: 'UPDATE_USER',
-        data: ''
+        type: "UPDATE_USER",
+        user
     }
 }
-const removeUser = (user) => {
+
+const removeUser = () => {
     return {
-        type: 'REMOVE_USER',
-        data: ''
+        type: "REMOVE_USER"
     }
 }
 
