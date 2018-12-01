@@ -32,15 +32,6 @@ class googleMap extends Component {
       console.log(this.state.coords)
     });
   }
-  x() {
-    // console.log('ok')
-    let obj = {
-      lat: this.state.coords.latitude,
-      lng: this.state.coords.longitude
-    }
-    this.props.submit(obj)
-    // console.log('ok')
-  }
   render() {
     const { coords} = this.state;
     console.log('x', coords)
@@ -56,7 +47,10 @@ class googleMap extends Component {
           updateCoords={this.updateCoords}
         />}
         <br />
-        <Button variant="contained" onClick={() => this.x()} color="secondary">Submit</Button>
+        <Button variant="contained" onClick={() => this.props.location({
+      lat: this.state.coords.latitude,
+      lng: this.state.coords.longitude
+    })} color="secondary">Submit</Button>
 
       </div>
     )

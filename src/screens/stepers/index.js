@@ -27,6 +27,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Location from './location'
+import fire from '../../config/firebase'
 
 
 class VerticalLinearStepper extends React.Component {
@@ -45,6 +46,10 @@ class VerticalLinearStepper extends React.Component {
             primary: ''
         }
 
+    }
+
+    location = location => {
+        fire.database().ref('schoolList/').update({'location': location})
     }
 
     handleNext = () => {
@@ -69,6 +74,7 @@ class VerticalLinearStepper extends React.Component {
         this.setState({
             [name]: event.target.value,
         });
+        fire.database().ref('schoolList/').update({[name]: event.target.value})
     };
 
     getSteps() {
@@ -198,7 +204,7 @@ class VerticalLinearStepper extends React.Component {
                     />
                 </div>
             case 3:
-                return <Location/>
+                return <Location location={this.location}/>
             default:
                 return 'Unknown step';
         }
