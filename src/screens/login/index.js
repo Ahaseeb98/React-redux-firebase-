@@ -3,6 +3,7 @@ import SignIn from './signIn'
 import SignUp from './signUp'
 import {updateUser, removeUser} from '../../Redux/action/autjAction'
 import { connect } from 'react-redux'
+import DashBoard from '../dashboard'
 
 class Login extends Component {
     constructor(props) {
@@ -24,7 +25,6 @@ class Login extends Component {
 
     render() {
         const { signup } = this.state
-        console.log(this.props)
         return (
             <div style={{
                 paddingTop: '1%',
@@ -34,11 +34,15 @@ class Login extends Component {
                 flexDirection: 'row',
             }}>
                 {
+                    this.props.user === null
+                    ?
                     !signup
                      ? 
                     <SignIn toggle={this.toggle}/>
                      : 
                     <SignUp toggle={this.toggle}/>
+                    :
+                    <DashBoard/>
                 }
                 <div>
                 </div>
