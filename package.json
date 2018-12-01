@@ -9,6 +9,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-facebook-emoji": "^1.0.11",
+    "react-google-maps": "^9.4.5",
     "react-redux": "^5.1.0",
     "react-scripts": "1.1.5",
     "redux": "^4.0.1",
