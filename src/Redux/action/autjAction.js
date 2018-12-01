@@ -11,7 +11,15 @@ const removeUser = () => {
     }
 }
 
+const data = (data) => {
+    return {
+        type: 'ADD_DATA',
+        data
+    }
+}
+
 export {
     updateUser,
-    removeUser
+    removeUser,
+    data
 }
