@@ -27,37 +27,6 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Location from './location'
-const styles = theme => ({
-    root: {
-        width: '90%',
-    },
-    button: {
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-    },
-    actionsContainer: {
-        marginBottom: theme.spacing.unit * 2,
-    },
-    resetContainer: {
-        padding: theme.spacing.unit * 3,
-    },
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-    dense: {
-        marginTop: 19,
-    },
-    menu: {
-        width: 200,
-    },
-});
-
 
 
 class VerticalLinearStepper extends React.Component {
@@ -103,7 +72,7 @@ class VerticalLinearStepper extends React.Component {
     };
 
     getSteps() {
-        return ['Basic School Details', 'Other School Details', 'Location'];
+        return ['Basic School Details', 'Facilities Offered', "Fee's Detail", 'Location'];
     }
 
     getStepContent(step) {
@@ -201,7 +170,11 @@ class VerticalLinearStepper extends React.Component {
                         }
                         label="CANTEEN"
                     /><br />
-                    <h3>Fees Structure:</h3>
+                   
+                </div>;
+            case 2:
+                return <div>
+                     <h3>Fees Structure:</h3>
                     <TextField
                         id="standard-name"
                         label="Pre-Primary Class Fees"
@@ -222,9 +195,9 @@ class VerticalLinearStepper extends React.Component {
                         value={this.state.Secondary}
                         onChange={this.handleChange('Secondary')}
                         margin="normal"
-                    /><br />
-                </div>;
-            case 2:
+                    />
+                </div>
+            case 3:
                 return <Location/>
             default:
                 return 'Unknown step';
@@ -242,7 +215,7 @@ class VerticalLinearStepper extends React.Component {
         console.log('this****', this.state)
 
         return (
-            <div className={classes.root}>
+            <div>
                 <Stepper activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => {
                         return (
@@ -250,12 +223,11 @@ class VerticalLinearStepper extends React.Component {
                                 <StepLabel>{label}</StepLabel>
                                 <StepContent>
                                     <Typography>{this.getStepContent(index)}</Typography>
-                                    <div className={classes.actionsContainer}>
+                                    <div>
                                         <div>
                                             <Button
                                                 disabled={activeStep === 0}
                                                 onClick={this.handleBack}
-                                                className={classes.button}
                                             >
                                                 Back
                       </Button>
@@ -263,7 +235,6 @@ class VerticalLinearStepper extends React.Component {
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={this.handleNext}
-                                                className={classes.button}
                                             >
                                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                             </Button>
@@ -275,7 +246,7 @@ class VerticalLinearStepper extends React.Component {
                     })}
                 </Stepper>
                 {activeStep === steps.length && (
-                    <Paper square elevation={0} className={classes.resetContainer}>
+                    <Paper square elevation={0}>
                         <Typography>All steps completed - you&apos;re finished</Typography>
                         <Button onClick={this.handleReset} className={classes.button}>
                             Reset
@@ -287,8 +258,5 @@ class VerticalLinearStepper extends React.Component {
     }
 }
 
-VerticalLinearStepper.propTypes = {
-    classes: PropTypes.object,
-};
 
-export default withStyles(styles)(VerticalLinearStepper);
+export default VerticalLinearStepper
