@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Login from './screens/login'
 import 'typeface-roboto';
 // import swal from 'sweetalert';
-import Stepers from './screens/stepers'
+// import Stepers from './screens/stepers'
 class App extends Component {
   constructor() {
     super();
@@ -18,9 +18,9 @@ class App extends Component {
       <div>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            {/* <center> */}
-              <Stepers/>
-            {/* </center> */}
+            <center>
+              <Login/>
+            </center>
           </PersistGate>
         </Provider>
       </div>

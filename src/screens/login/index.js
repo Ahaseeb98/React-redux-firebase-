@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SignIn from './signIn'
 import SignUp from './signUp'
+import {updateUser, removeUser} from '../../Redux/action/autjAction'
+import { connect } from 'react-redux'
 
 class Login extends Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class Login extends Component {
 
     render() {
         const { signup } = this.state
-        // console.log(this.state)
+        console.log(this.props)
         return (
             <div style={{
                 paddingTop: '1%',
@@ -45,5 +47,17 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducers.user
+    }
+} 
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUser: (user) => dispatch(updateUser(user)),
+        removeUser: (user) => dispatch(removeUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

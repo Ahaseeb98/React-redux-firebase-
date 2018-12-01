@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import fire from '../../../config/firebase'
+import swal from 'sweetalert';
 
 class Login extends Component {
     constructor(props) {
@@ -16,10 +17,10 @@ class Login extends Component {
 
     signup(){
         fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-            console.log('Signed up')
+            swal("Success!", "You've successfully Signed Up", "success");
         }).then((u)=>{console.log(u)})
         .catch((error) => {
-            console.log(error);
+            swal("warning!", 'Something went wrong!', "warning");
           })
     }
 
@@ -49,19 +50,7 @@ class Login extends Component {
                 }
                 }>
                     <h1 style={{ width: '100%', textAlign: 'center' }}>Sign Up</h1>
-                    <TextField
-                        id="outlined-full-width"
-                        // style={{ margin: 8 }}
-                        placeholder="Name.."
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        value={this.state.name}
-                        onChange={this.handleChange('name')}
-                        style={{ display: 'block', margin: '20px 0px' }}
-                        InputLabelProps={{
-                            shrink: true,
-                        }} />
+                    
                     <TextField
                         id="outlined-full-width"
                         // style={{ margin: 8 }}

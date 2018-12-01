@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import fire from '../../../config/firebase'
+import fire from '../../../config/firebase';
+import swal from 'sweetalert';
+import { connect } from 'react-redux';
+import {updateUser, removeUser} from '../../../Redux/action/autjAction'
+
+
 const provider = new fire.auth.FacebookAuthProvider();
 
 class Login extends Component {
@@ -15,12 +20,12 @@ class Login extends Component {
 
     }
 
-    
     login() {
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
-            console.log('log in');
+            this.props.updateUser({'email': this.state.email, 'password': this.state.password})
+            swal("Success!", "You've successfully logged in", "success");
         }).catch((error) => {
-            console.log(error);
+            swal("Warning!", "Somthing went wrong!", "warning");
           });
       }
     
@@ -120,5 +125,17 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducers.user
+    }
+} 
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUser: (user) => dispatch(updateUser(user)),
+        removeUser: (user) => dispatch(removeUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
